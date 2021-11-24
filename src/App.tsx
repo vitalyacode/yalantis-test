@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { EmployeeList } from './components/EmployeeList/EmployeeList'
+import { getAllEmployees, getFromStorage } from './actions/EmployeeActions'
+import { useDispatch } from 'react-redux'
+import { IEmployee } from './reducers/employeeReducer'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const localEmployees: IEmployee[] | null = JSON.parse(window.localStorage.getItem('employees') || '')
+    if (localEmployees) {
+      dispatch(getFromStorage(localEmployees))
+    } else {
+      console.log('api')
+      dispatch(getAllEmployees())
+    }
+    //localEmployees ? dispatch(getFromStorage()) : dispatch(getAllEmployees())
+  }, [dispatch])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HashRouter>
+        <Routes>
+          <Route path='/employees' element={<EmployeeList />} />
+          <Route path='*' element={<Navigate to='/employees' />} />
+        </Routes>
+        {/* <Navigate to='/employees' /> */}
+      </HashRouter>
     </div>
   );
 }

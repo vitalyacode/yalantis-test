@@ -1,0 +1,14 @@
+.employee-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, auto));
+}
+
+.employee-container {
+  display: grid;
+  grid-template-columns: 3fr 350px;
+}
+
+.birthday-list {
+  padding-left: 20px;
+  border-left: 1px solid black;
+}
