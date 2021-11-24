@@ -9,7 +9,7 @@ import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    const localEmployees: IEmployee[] | null = JSON.parse(window.localStorage.getItem('employees') || '')
+    const localEmployees: IEmployee[] | null = JSON.parse(window.localStorage.getItem('employees') || null)
     if (localEmployees) {
       dispatch(getFromStorage(localEmployees))
     } else {
