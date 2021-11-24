@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap);.form{flex-direction:column}.form,.label-input{display:flex}.employee-list{display:grid;grid-template-columns:repeat(3,minmax(250px,auto))}.employee-container{display:grid;grid-template-columns:3fr 350px}.birthday-list{padding-left:20px;border-left:1px solid #000}.App{font-family:"Roboto",sans-serif;padding:20px}
+/*# sourceMappingURL=main.80f94b60.chunk.css.map */
